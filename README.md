@@ -15,6 +15,23 @@ This plugin allows for android devices to continue running services in the backg
 
 ***NOTE: Using cordova version >= 8.0.0 is recommended.***
 
+## Android 14+ Compatibility (API 34+)
+
+Starting with Android 14 (targetSdkVersion >= 34), foreground services **must declare their service type** using both the `android:foregroundServiceType` attribute in the manifest and the appropriate permission.
+
+This fork includes:
+
+- `android:foregroundServiceType="dataSync"` in the manifest.
+- Permission `android.permission.FOREGROUND_SERVICE_DATA_SYNC` automatically injected via plugin config.
+- Use of `startForeground(..., ..., ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC)` in Java code (required in API 34+).
+
+Make sure to use this plugin **only for services that justify using the `dataSync` type**, or adjust accordingly.
+
+If you're targeting Android 14+ and your app crashes at service startup, it likely lacks either:
+- the correct `startForeground()` signature in Java, or
+- the required permission for the declared `foregroundServiceType`.
+
+
 ---
 
 ## Setup and Usage
