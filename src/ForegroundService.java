@@ -88,7 +88,7 @@ public class ForegroundService extends Service {
         }
 
         // Put service in foreground and show notification (id of 0 is not allowed)
-        startForeground(id != 0 ? id : 197812504, notification,startForeground(id != 0 ? id : 197812504, notification,  ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC);
+        startForeground(id != 0 ? id : 197812504, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC);
     }
 
     @Override
